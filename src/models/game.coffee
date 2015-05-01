@@ -38,7 +38,7 @@ $.create = ( socket, params ) ->
     return socket.emit 'game:create:result', success: false, error: 'incorrect_password'
 
   # verify the type
-  unless params.type is 'css'
+  unless $game_repository.exists params.type
     return socket.emit 'game:create:result', success: false, error: 'invalid_game_type'
 
   # since this is okay, create the game
